@@ -7,17 +7,11 @@
 <script>
 export default {
   name: 'Home',
-  components: {
-    
-  }
 }
 </script>
 
 <style scoped>
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 600px;
-}
+/* .home {
+  
+} */
 </style>

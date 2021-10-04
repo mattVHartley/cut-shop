@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <Header />
-    <Sidebar />
-    <router-view/>
+    <Header class="header" />
+    <Sidebar class="sidebar" />
+    <router-view class="router-view"/>
   </div>
 </template>
 
@@ -29,9 +29,30 @@ export default {
 body {
   font-family: 'Nunito', sans-serif;
 }
+
 .container {
-  max-width: 100%;
-  min-height: 100vh;
-  margin: auto;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: min-content 1fr;
+  grid-template-areas: 
+    "header header header"
+    "sidebar router-view router-view"
+  ;
 }
+
+.header {
+  grid-area: header;
+  background-color: red;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.router-view {
+  grid-area: router-view;
+  background-color: blue;
+}
+
 </style>

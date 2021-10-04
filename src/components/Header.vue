@@ -3,7 +3,7 @@
         <span class="header-logo">The Cut Shop</span>
         <ul class="header-nav">
             <li>> My basket £5.00</li>
-            <li>backet</li>
+            <li><fa class="lg" icon="shopping-cart" /></li>
         </ul>
     </div>
 </template>
@@ -22,7 +22,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 4px solid yellow;
+    border-bottom: 5px solid yellow;
 }
 
 .header-logo {
@@ -33,6 +33,7 @@ export default {
 
 .header-nav {
     display: flex;
+    align-items: center;
 }
 
 .header-nav li {
@@ -42,5 +43,9 @@ export default {
 
 .header-nav li:last-child {
     margin-right: 1rem;
+}
+
+.lg {
+    font-size: 1.5rem;
 }
 </style>
