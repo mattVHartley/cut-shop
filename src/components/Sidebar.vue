@@ -15,6 +15,9 @@
       <router-link to="/metal" active-class="active" tag="button" class="side-btn">
         <div class="link-container">> Metal</div>
       </router-link>
+      <router-link to="/material-order2" active-class="active" tag="button" class="side-btn">
+        <div class="link-container">> Aluminium Composite</div>
+      </router-link>
       <router-link to="/about" active-class="active" tag="button" class="side-btn">
         <div class="link-container">> About</div>
       </router-link>
@@ -31,6 +34,8 @@ export default {
 <style scoped>
 .sidebar {
     padding: 1rem;
+    position: fixed;
+    width: min-content;
 }
 
 .search-box {
@@ -67,16 +72,18 @@ export default {
     border-radius: 0.30em;
     background-color: #30C016;
     color: white;
-    font-size: 1.25rem;
+    font-size: 1.45rem;
 }
 
 .menu-items {
     display: flex;
     flex-direction: column;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .menu-items > * {
-    margin-top: 0.4rem
+    margin-top: 1rem
 }
 
 .link-container {

@@ -28,6 +28,7 @@ export default {
 }
 body {
   font-family: 'Nunito', sans-serif;
+  padding-top: 105px;
 }
 
 .container {
@@ -43,7 +44,6 @@ body {
 
 .header {
   grid-area: header;
-  background-color: red;
 }
 
 .sidebar {
@@ -52,7 +52,7 @@ body {
 
 .router-view {
   grid-area: router-view;
-  background-color: blue;
+  padding-left: 280px;
 }
 
 </style>

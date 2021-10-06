@@ -1,9 +1,11 @@
 <template>
     <div class="header">
-        <span class="header-logo">The Cut Shop</span>
+        <router-link to="/" class="link-container">
+            <span class="header-logo">The Cut Shop</span>
+        </router-link>
         <ul class="header-nav">
-            <li>> My basket £5.00</li>
-            <li><fa class="lg" icon="shopping-cart" /></li>
+            <li>> My basket: £5.00</li>
+            <li><fa class="shopping-cart" icon="shopping-cart" /></li>
         </ul>
     </div>
 </template>
@@ -17,18 +19,24 @@ export default {
 <style scoped>
 .header {
     height: 100px;
-    background: black;
-    color: white;
+    background: #131415;
+    color: #FFFFFF;
+    position: fixed;
+    width: 100%;
+    top: 0;
     display: flex;
+    z-index: 10;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 5px solid yellow;
+    border-bottom: 5px solid #FAED27;
 }
 
 .header-logo {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     font-weight: 800;
     font-size: 1.85rem;
+    cursor: pointer;
+    color: #FFFFFF;
 }
 
 .header-nav {
@@ -42,10 +50,15 @@ export default {
 }
 
 .header-nav li:last-child {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 }
 
-.lg {
-    font-size: 1.5rem;
+.shopping-cart {
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.link-container {
+    text-decoration: none;
 }
 </style>
