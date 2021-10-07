@@ -2,59 +2,49 @@
   <div class="container">
     <h1 class="title">Material Order 2</h1>
     <div class="form-container">
-      <form class="form">
+      <form @submit.prevent="handleSubmit" class="form">
         <div class="section color-type border">
           <div class="form-control">
             <label>Colour/Type</label>
-            <select name="color">
-              <option value="">Please Select</option>
-              <option value="red">red</option>
-              <option value="blue">blue</option>
-              <option value="black">black</option>
-              <option value="yellow">yellow</option>
-              <option value="pink">pink</option>
+            <select v-model="order.colorType">
+              <option v-for="color in colorTypesOption" v-bind:key="color.id">{{ color }}</option>
             </select>
           </div>
           <div class="form-control">
             <label>Thickness</label>
-            <select name="thickness">
-              <option value="">Please Select</option>
-              <option value="6mm">6mm</option>
-              <option value="9mm">9mm</option>
-              <option value="12mm">12mm</option>
-              <option value="18mm">18mm</option>
-              <option value="24mm">24mm</option>
+            <select v-model="order.thickness">
+              <option v-for="thickness in thicknessOption" v-bind:key="thickness.id">{{ thickness }}</option>
             </select>
           </div>
         </div>
         <div class="section width-height border">
           <div class="form-control">
             <label>Width</label>
-            <input type="text" />
+            <input type="text" v-model="order.width" />
           </div>
           <div class="form-control">
             <label>Height</label>
-            <input type="text" />
+            <input type="text" v-model="order.height" />
           </div>
           <div class="form-control">
             <label>Total Number of Pcs To Be Cut</label>
-            <input type="text" />
+            <input type="text" v-model="order.totalpcs" />
           </div>
           <div class="form-control">
-            <input type="submit" value="Add Another Pcs" class="btn" />
+            <button type="submit" class="btn">Add Another Pcs</button>
           </div>
         </div>
         <div class="section border">
           <div class="display-order">
               <div class="display-order-title">
-                  <h3 class="display-title">Display Order</h3>
+                  <h3 class="display-title">Current Order</h3>
               </div>
               <div class="display-order-orders">
-                  <p>This is order one</p>
-                  <p>This is order two</p>
-                  <p>This is order three</p>
-                  <p>This is order fore</p>
-                  <p>This is order five</p>
+                  <p>Color/Type: {{ order.colorType }}</p>
+                  <p>Thickness: {{ order.thickness }}</p>
+                  <p>Width: {{ order.width }}</p>
+                  <p>Height: {{ order.height }}</p>
+                  <p>Total Number of Pcs To Be Cut: {{ order.totalpcs }}</p>
               </div>
           </div>
         </div>
@@ -62,6 +52,16 @@
           <div class="show-cost">
             <h1 class="display-title">Show Cost</h1>
             <input type="submit" value="Add To Basket" class="btn" />
+          </div>
+        </div>
+        <div class="section border">
+          <div class="display-order">
+              <div class="display-order-title">
+                  <h3 class="display-title">Orders</h3>
+              </div>
+              <div v-for="order in orders" :key="order" class="orders">
+                  <p>{{ order }}</p>
+              </div>
           </div>
         </div>
       </form>
@@ -72,6 +72,37 @@
 <script>
 export default {
   name: "MaterialOrder2",
+  data() {
+    return {
+      order: {
+        colorType: "",
+        thickness: "",
+        width: "",
+        height: "",
+        totalpcs: ""
+      },
+      colorTypesOption: ['red', 'blue', 'black', 'yellow', 'pink'],
+      thicknessOption: ['6mm', '9mm', '12mm', '18mm', '24mm'],
+      orders: []
+    }
+  },
+  methods: {
+    handleSubmit() {
+      this.orders.push(`Color/Type: ${this.order.colorType}`)
+      this.orders.push(`Thickness: ${this.order.thickness}`)
+      this.orders.push(`Width: ${this.order.width}`)
+      this.orders.push(`Height: ${this.order.height}`)
+      this.orders.push(`Total Number of Pcs To Be Cut: ${this.order.totalpcs}`)
+
+      console.log(this.orders)
+
+      this.order.colorType = ""
+      this.order.thickness = ""
+      this.order.width = ""
+      this.order.height = ""
+      this.order.totalpcs = ""
+    }
+  }
 };
 </script>
 
@@ -79,13 +110,35 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
+  /* overflow-y: hidden; */
+}
+
+.orders {
+  font-size: 1.2rem;
+  /* color: #30c016; */
+  /* margin-top: 0.50rem; */
+  line-height: 1.5;
+}
+
+.display-order-orders {
+  font-size: 1.2rem;
+  /* color: #30c016; */
+}
+
+.display-order-orders > p {
+  line-height: 1.5;
+}
+
+.orders:nth-child(5n+1) {
+  color: red;
+  border-bottom: 1px solid red;
+  margin-bottom: 1rem;
 }
 
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  height: 70vh;
 }
 
 .title {
